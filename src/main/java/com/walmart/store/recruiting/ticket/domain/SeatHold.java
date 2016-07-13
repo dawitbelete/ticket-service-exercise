@@ -1,5 +1,10 @@
 package com.walmart.store.recruiting.ticket.domain;
 
+import java.util.Hashtable;
+import java.util.List;
+
+//import VenueReservation.Seat;
+
 /**
  * This POJO contains the data relevant to a successful seat hold request, including the seat hold id which
  * may be used later to permanently reserve the seats.
@@ -8,6 +13,18 @@ public class SeatHold {
 
     private String id;
     private int numSeats;
+    
+    public static Hashtable<String, List<Seat>> getHeldSeatsMap() {
+		return heldSeatsMap;
+	}
+
+	public static void setHeldSeatsMap(Hashtable<String, List<Seat>> heldSeatsMap) {
+		SeatHold.heldSeatsMap = heldSeatsMap;
+	}
+
+	//mapped the seathold with list of seats on hold
+    public static Hashtable<String,List<Seat>> heldSeatsMap = new Hashtable<String,List<Seat>>();
+    
 
     /**
      * Constructor.
@@ -18,6 +35,7 @@ public class SeatHold {
     public SeatHold(String id, int numSeats) {
         this.id = id;
         this.numSeats = numSeats;
+        //heldSeatsMap.put(id, seats);
     }
 
     /**
